@@ -1,4 +1,3 @@
-const { LexModelBuildingService } = require('aws-sdk');
 const { v4: uuidv4 } = require('uuid');
 
 const params = fileName => {
@@ -7,7 +6,8 @@ const params = fileName => {
     const imageParams = {
         Bucket: 'user-images-84a28cbd-d826-4a43-8969-47e43b9ffd1c',
         Key: `${uuidv4()}.${fileType}`,
-        Body: fileName.buffer
+        Body: fileName.buffer,
+        ACL: 'public-read'
     };
     return imageParams;
 };
